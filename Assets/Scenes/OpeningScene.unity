@@ -1168,8 +1168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 2082536105}
   speaker: {fileID: 789080108}
-  argueDialogueA: {fileID: 1441595056}
-  argueDialogueB: {fileID: 510367810}
+  textTimer: 0
+  textTimerMax: 0.001
+  displayedLetters: 0
 --- !u!1 &1795862480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1366,7 +1367,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[insert text here]'
+  m_text: Sunlight unabashedly bathes over a sturdy forest tree, under which rests
+    a worn, rusted machine.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6ea66623b0d17c34b9bb86b9caab7918, type: 2}
   m_sharedMaterial: {fileID: -805909875136550752, guid: 6ea66623b0d17c34b9bb86b9caab7918,
