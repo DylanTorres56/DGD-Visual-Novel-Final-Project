@@ -7,6 +7,42 @@ public class TextBoxController : MonoBehaviour
 {
     public TextMeshProUGUI dialogue;
     public TextMeshProUGUI speaker;
+    
+    private string thisDialogue;
+
+    public float textTimer;
+    public float textTimerMax = .001f;
+
+    public int displayedLetters = 0;
+
+    void Start()
+    {
+        thisDialogue = dialogue.text;
+    }
+
+    void Update()
+    {
+        textTimer += Time.deltaTime;
+
+        if (textTimer >= textTimerMax) 
+        {
+            textTimer = 0;
+            displayedLetters++;
+
+            if ((displayedLetters < thisDialogue.Length - 1) && thisDialogue.Substring(displayedLetters - 1, 1) == "<" ) 
+            {
+                Debug.Log("WHILE TEST: " + thisDialogue.Substring(displayedLetters - 1, 1));
+                while (thisDialogue.Substring(displayedLetters, 1) != ">") 
+                {
+                    displayedLetters++;
+                }
+                displayedLetters++;
+            }
+
+            displayedLetters = Mathf.Min(displayedLetters, thisDialogue.Length);
+            dialogue.text = thisDialogue.Substring(0, displayedLetters);
+        }        
+    }
 
     public void Imprint(textDialogueLine dL) 
     {
@@ -35,7 +71,9 @@ public class TextBoxController : MonoBehaviour
             theDialogue += "\n 1)" + dL.choiceA;
             theDialogue += "\n 2)" + dL.choiceB;
         }
-        dialogue.text = theDialogue;
+        
+        thisDialogue = theDialogue;
+        displayedLetters = 0;
 
         if (dL.who != Characters.sameAsBefore) 
         {
