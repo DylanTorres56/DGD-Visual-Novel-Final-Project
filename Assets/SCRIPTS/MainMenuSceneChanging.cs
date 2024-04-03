@@ -7,6 +7,6 @@ public class MainMenuSceneChanging : MonoBehaviour
 {
     public void StartGame()
     {
-        EditorSceneManager.LoadScene("OpeningScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("OpeningScene");
     }
 }
